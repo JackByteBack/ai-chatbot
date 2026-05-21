@@ -1,0 +1,11 @@
+{
+  "name": "html-calculator",
+  "version": "1.0.0",
+  "description": "A simple calculator implemented in HTML, CSS, and JavaScript.",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "author": "Your Name",
+  "license": "MIT"
+}

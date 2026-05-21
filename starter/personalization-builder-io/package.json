@@ -1,0 +1,75 @@
+{
+  "repository": "https://github.com/vercel/examples.git",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "analyze": "BUNDLE_ANALYZE=both pnpm build",
+    "find:unused": "next-unused"
+  },
+  "next-unused": {
+    "alias": {
+      "@lib/*": [
+        "lib/*"
+      ],
+      "@assets/*": [
+        "assets/*"
+      ],
+      "@config/*": [
+        "config/*"
+      ],
+      "@components/*": [
+        "components/*"
+      ],
+      "@utils/*": [
+        "utils/*"
+      ]
+    },
+    "debug": true,
+    "include": [
+      "components",
+      "lib",
+      "pages",
+      "sections"
+    ],
+    "exclude": [],
+    "entrypoints": [
+      "pages"
+    ]
+  },
+  "dependencies": {
+    "@builder.io/personalization-utils": "0.0.7",
+    "@builder.io/react": "^1.1.47",
+    "@builder.io/utils": "^1.0.4",
+    "@szhsin/react-menu": "^2.3.3",
+    "@types/js-cookie": "^3.0.1",
+    "@vercel/fetch": "^6.1.1",
+    "atob": "^2.1.2",
+    "jest": "^27.4.7",
+    "js-cookie": "^3.0.1",
+    "next": "^16.0.10",
+    "next-seo": "^5.1.0",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
+    "react-icons": "^4.3.1",
+    "react-merge-refs": "^1.1.0",
+    "react-tiny-fab": "^4.0.4"
+  },
+  "devDependencies": {
+    "@next/bundle-analyzer": "^12.0.10",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "autoprefixer": "^10.4.2",
+    "eslint": "^8.9.0",
+    "eslint-config-next": "canary",
+    "postcss": "^8.4.6",
+    "tailwindcss": "^3.0.18",
+    "typescript": "^5"
+  },
+  "resolutions": {
+    "webpack": "^5.0.0-beta.30"
+  }
+}
