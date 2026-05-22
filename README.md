@@ -1,66 +1,189 @@
 <p align="center">
-  <a href="https://vercel.com">
-    <img src="https://assets.vercel.com/image/upload/v1588805858/repositories/vercel/logo.png" height="96">
-    <h3 align="center">Vercel Examples</h3>
-  </a>
+  <img src="Firefly.png" alt="Jack AI" height="80" />
+  <h1 align="center">Jack AI — Vibe Coding Platform</h1>
+  <p align="center">
+    An AI-powered, full-stack vibe coding platform. Describe what you want to build — the AI agent writes the code, spins up a sandbox, and gives you a live preview.
+  </p>
+  <p align="center">
+    Built by <strong>Jack Obito</strong> · BCA Student @ TCET Mumbai
+  </p>
 </p>
 
-- [Solutions](/solutions) – Demos, reference architecture, and best practices
-- [Starter](/starter) – Functional applications which can act as a starting point
-- And more!
+---
 
-## Vercel Templates
+## ✨ What is this?
 
-Multiple examples are being featured in [Vercel's Templates](https://vercel.com/templates), visit that page for more advanced filtering options.
+This is a **monorepo** (forked from Vercel Examples) containing a production-grade AI coding assistant app at `apps/vibe-coding-platform`. You type a prompt, the AI agent generates a full-stack application inside a secure sandboxed environment, with real-time logs, file explorer, and live preview — all in the browser.
 
-### For Vercelians
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?demo-description=A+full-stack+coding+platform+built+with+Vercel%27s+AI+Cloud%2C+AI+SDK%2C+and+Next.js.&demo-title=Vibe+Coding+Platform&repository-url=https%3A%2F%2Fgithub.com%2FJackByteBack%2Fai-chatbot&project-name=jack-ai&repository-name=jack-ai&from=vibe-coding-platform-app)
 
-Examples that have front matter metadata will create a new Draft template in [Contentful](https://app.contentful.com), for more steps on how to publish a template, read [Publishing Templates](./internal/publishing-templates.md).
+---
 
-## Adding a new example
+## 🚀 Features
 
-To quickly start contributing with a new example, run the following commands:
+| Feature | Description |
+|---|---|
+| 🤖 **Multi-Model AI** | Switch between Claude, GPT, Llama, DeepSeek, Kimi, and more |
+| 🏖️ **Live Sandbox** | Secure code execution via Vercel Sandbox with live preview |
+| 📁 **File Explorer** | Browse and inspect all generated project files |
+| 📋 **Command Logs** | Real-time terminal output from the sandbox |
+| 🛠️ **Error Monitor** | Detects and auto-fixes runtime errors |
+| ⚡ **One-Click Deploy** | Deploy any generated app directly to Vercel |
+| 🎛️ **Reasoning Control** | Adjustable reasoning effort (low / medium / high) |
 
-```bash
-pnpm i
-pnpm new-example
+---
+
+## 🧠 Supported Models
+
+| Model | Provider |
+|---|---|
+| Claude Opus 4.6 | Anthropic |
+| GPT 5.4 | OpenAI |
+| Llama 3.3 70B *(default)* | Meta |
+| DeepSeek V4 Pro | DeepSeek |
+| Kimi K2.6 | Moonshot AI |
+| MiniMax M2.7 | MiniMax |
+| Qwen 2.5 72B | Alibaba |
+| GLM 5.1 | Zhipu AI |
+| Gemma 4 31B | Google |
+| GPT OSS 20B | OpenAI |
+
+---
+
+## 🗂️ Repo Structure
+
+```
+ai-chatbot/
+├── apps/
+│   └── vibe-coding-platform/     ← ✅ Main app (start here)
+│       ├── ai/                   # AI tools, gateway, model config
+│       ├── app/                  # Next.js App Router pages
+│       ├── components/           # UI components (chat, preview, logs…)
+│       └── .env.example          # Required environment variables
+├── app-directory/
+│   └── jack/                     # Minimal Next.js demo scaffold
+├── solutions/                    # Vercel example solutions
+├── start.md                      # Local dev guide & debugging notes
+├── mind map.md                   # Project navigation quick-reference
+└── README.md                     ← You are here
 ```
 
-If the script above isn't used, make sure the example complies with the following:
+---
 
-- It must have a `.gitignore` similar to [plop-templates/example/.gitignore](./plop-templates/example/.gitignore)
-- It must have a `package.json` similar to [plop-templates/example/package.json](./plop-templates/example/package.json) (usage of Next.js is optional). The license should be `MIT`
-- It must have a `README.md` similar to [plop-templates/example/README.md](./plop-templates/example/README.md). The example has to be able to include a demo URL (the Vercel team will deploy it!) and if it requires environment variables, it must have a `.env.example` file and instructions on how to set them up. Take [bot-protection-datadome](./edge-middleware/bot-protection-datadome/README.md) as an example.
-  - To customize the Vercel Deploy Button take a look at the [docs](https://vercel.com/docs/deploy-button), useful if the deployment has required environment variables.
-- If using Next.js, it must have a `.eslintrc.json` similar to [plop-templates/example/.eslintrc.json](./plop-templates/example/.eslintrc.json)
-- All Next.js examples should be using the same styling and layout provided by `@vercel/examples-ui`, its usage can be seen in the [plop template](./plop-templates/example)
+## ⚙️ Getting Started (Local)
 
-### Adding a template
+### Prerequisites
 
-If you would like the example to be featured in [vercel.com/templates](https://vercel.com/templates) then also add the front matter metadata to the top of the readme, like in [bot-protection-datadome](./edge-middleware/bot-protection-datadome/README.md). To know all the possible values for each metadata take a look at [`internal/fields.json`](./internal/fields.json).
-
-If you want to add related templates to your template, copy the `slug` from the other template into the `relatedTemplates` field, for example for [vercel.com/templates/next.js/monorepo-turborepo](https://vercel.com/templates/next.js/monorepo-turborepo) the slug is `monorepo-turborepo`, as written in [solutions/monorepo/README.md](./solutions/monorepo/README.md)
-
-### The pre-commit hook
-
-We use [Husky](https://typicode.github.io/husky/#/) to manage the pre-commit [Git hook](https://git-scm.com/docs/githooks) in this repo. Husky configures hooks automatically during install, so you don't need to do anything special to get them working, but if it fails to install, you can run the following command to install it manually:
+- **Node.js** `24.x` — required by the vibe platform
+- **pnpm** `9.x` — repo uses pnpm workspaces
 
 ```bash
-pnpm run prepare
+# Install Node 24 (macOS/Homebrew)
+brew install node@24
+export PATH="/opt/homebrew/opt/node@24/bin:$PATH"
 ```
 
-Code changes automatically go through Prettier and ESLint when you make a commit, **please do not skip these steps** unless they're broken and in that case let us known by creating an issue.
+### 1. Install dependencies
 
-## Read the Docs
+```bash
+# From repo root
+HUSKY=0 pnpm install --force
+```
 
-- [Vercel Docs](https://vercel.com/docs)
-- [Next.js Docs](https://nextjs.org/docs)
+> `HUSKY=0` avoids errors if the `.git` directory isn't in the expected location.
 
-If you have any questions or suggestions about the docs, feel free to [open a discussion](https://github.com/vercel/examples/discussions), or [submit a PR](https://github.com/vercel/examples/pulls) with your suggestions!
+### 2. Set up environment variables
 
-## Provide Feedback
+```bash
+cd apps/vibe-coding-platform
+cp .env.example .env.local
+```
 
-- [Start a Discussion](https://github.com/vercel/examples/discussions) with a question, piece of feedback, or idea you want to share with the team.
-- [Open an Issue](https://github.com/vercel/examples/issues) if you believe you've encountered a bug that you want to flag for the team.
-# jack-ai
-# jack-ai
+Fill in your API keys in `.env.local`:
+
+```env
+AI_GATEWAY_API_KEY=your_vercel_ai_gateway_key
+ANTHROPIC_API_KEY=your_anthropic_key
+OPENAI_API_KEY=your_openai_key
+DEEPSEEK_API_KEY=your_deepseek_key
+KIMI_API_KEY=your_kimi_key
+# ... see .env.example for full list
+```
+
+### 3. Run the app
+
+```bash
+cd apps/vibe-coding-platform
+pnpm dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) — if port 3000 is busy, Next.js will pick the next available port.
+
+---
+
+## 🛠️ Debugging
+
+### Quick health check
+
+```bash
+curl -I http://localhost:3000
+```
+
+### Debug server-side code (API routes / Server Components)
+
+```bash
+NODE_OPTIONS="--inspect=9229" pnpm dev
+```
+
+Then attach a debugger:
+- **Chrome**: `chrome://inspect` → "Open dedicated DevTools for Node"
+- **VS Code**: add a `Node: Attach` config pointing to port `9229`
+
+### Debug client-side (React)
+
+Use browser DevTools → Sources tab, or add `debugger;` / `console.log()` statements.
+
+### Common issues
+
+| Problem | Fix |
+|---|---|
+| `ERR_CONNECTION_REFUSED` | Server isn't running — `cd apps/vibe-coding-platform && pnpm dev` |
+| `engines` mismatch on root `pnpm dev` | Run from `apps/vibe-coding-platform` directly, not repo root |
+| Install fails behind proxy | Unset proxy vars: `env -u ALL_PROXY -u HTTPS_PROXY HUSKY=0 pnpm install --force` |
+| `shiki` externalization warnings | Non-fatal — app runs fine |
+
+---
+
+## 🤖 Example Prompts
+
+```
+Generate a Next.js app that allows listing and searching Pokémon
+Create a Golang server that responds "Hello World" to any request
+Build a to-do app with local storage and dark mode
+Create a weather dashboard using the OpenWeatherMap API
+```
+
+---
+
+## 📦 Tech Stack
+
+- [Next.js 16](https://nextjs.org) with Turbopack
+- [AI SDK v6](https://ai-sdk.dev) — streaming, tool calling, multi-model
+- [Vercel AI Gateway](https://vercel.com/docs/ai-gateway) — unified model API
+- [Vercel Sandbox](https://vercel.com/docs/vercel-sandbox) — secure code execution
+- [Tailwind CSS](https://tailwindcss.com) + [shadcn/ui](https://ui.shadcn.com)
+- [TypeScript](https://typescriptlang.org)
+
+---
+
+## 👤 Developer
+
+Made by **Jack Obito** (`JackByteBack`) — BCA student at **TCET Mumbai**, passionate about full-stack web development, AI tooling, and VR/XR.
+
+- GitHub: [@JackByteBack](https://github.com/JackByteBack)
+
+---
+
+## 📄 License
+
+MIT
