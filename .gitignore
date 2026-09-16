@@ -16,4 +16,7 @@
 # Local ENV files
 /.env*.local
 
+# pnpm store cache
+.pnpm-store
+
 .vercel
